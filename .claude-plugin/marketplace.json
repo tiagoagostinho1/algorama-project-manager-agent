@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "algorama",
+  "version": "1.0.0",
+  "description": "Algorama Claude Code plugins for project management and productivity.",
+  "owner": {
+    "name": "Algorama",
+    "email": "tiago@algorama.pt",
+    "url": "https://github.com/algorama"
+  },
+  "homepage": "https://github.com/algorama/algorama-project-manager",
+  "repository": "https://github.com/algorama/algorama-project-manager",
+  "license": "MIT",
+  "plugins": [
+    {
+      "name": "algorama-project-manager",
+      "version": "1.0.0",
+      "description": "Lightweight project manager for Claude Code. Keeps context across sessions using local markdown files. No external tools required.",
+      "source": "./",
+      "category": "productivity",
+      "keywords": ["project-management", "tasks", "context", "pm"]
+    }
+  ]
+}
