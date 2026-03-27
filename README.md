@@ -28,17 +28,44 @@ Keeps full context across sessions using local markdown files. No external tools
 
 ---
 
-## Commands
+## Agents
+
+Two agents, one for each layer of the work:
+
+| Agent | Role | File |
+|---|---|---|
+| **pm** | Execution — tracks tasks, sessions, and what's in progress | `agents/pm.md` |
+| **po** | Product — decides what to build, in what order, and why | `agents/po.md` |
+
+Use the PM agent for daily work. Use the PO agent when you need to think about the product — what to build next, whether an idea is worth it, or how to sequence the roadmap.
+
+---
+
+## PM commands
 
 | Command | What it does |
 |---|---|
-| `/pm:briefing` | Current state — blocked, in progress, up next |
-| `/pm:next` | One thing to do right now |
+| `/pm:briefing` | Current state — tasks with story context, product pulse |
+| `/pm:next` | One thing to do right now — hands off to PO if backlog is empty |
 | `/pm:done` | Close session, update tasks, save context |
 | `/pm:task [text]` | Add a task from natural language |
+| `/pm:unblock [ID]` | Resolve a blocked task — decision, workaround, or spike |
 | `/pm:review` | Weekly review — done, slipped, stale, overdue |
 | `/pm:standup` | Weekly report ready to share |
-| `/pm:help` | List all commands |
+| `/pm:help` | List all PM commands |
+
+## PO commands
+
+| Command | What it does |
+|---|---|
+| `/po:brief` | Current product state — Now with task progress, Next, unresolved |
+| `/po:story [text]` | Add a feature idea or user story |
+| `/po:validate [ID]` | Challenge a story before building — problem, evidence, urgency |
+| `/po:refine [ID]` | Sharpen a story and add acceptance criteria |
+| `/po:breakdown [ID]` | Break a refined story into tasks in project-tasks.md |
+| `/po:prioritize` | Re-order backlog by value vs. effort |
+| `/po:ship [ID]` | Mark a story as shipped, close tasks, record the milestone |
+| `/po:help` | List all PO commands |
 
 ---
 
@@ -68,7 +95,8 @@ Tasks are added via `/pm:task` or edited manually — both work.
 
 ```
 your-project/
-├── project-tasks.md           ← task list (auto-created if missing)
+├── project-tasks.md           ← PM: execution tasks (auto-created if missing)
+├── product-backlog.md         ← PO: stories and product decisions (auto-created if missing)
 └── .claude/
     ├── CLAUDE.md              ← your project context (fill once)
     └── CONTEXT.md             ← session history (last 10 sessions)
@@ -87,8 +115,14 @@ Copy this to `.claude/CLAUDE.md` in your project and fill it in:
 
 ## Project
 - **Name**: My App
-- **Goal**: [what you're building and why]
+- **Goal**: [what you're building and why — one sentence]
 - **Status**: [where things stand right now]
+
+## Product
+- **Who is this for**: [be specific — not "users", but "freelance designers who invoice clients"]
+- **Core value**: [the one thing this product does better than anything else]
+- **Success looks like**: [how you know the product is working — a metric, a behavior, a feeling]
+- **What we are NOT building**: [explicit scope boundaries — helps the PO say no faster]
 
 ## Team
 - [Name] — [role]

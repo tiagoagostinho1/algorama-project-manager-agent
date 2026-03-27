@@ -28,5 +28,20 @@ Add a task to `project-tasks.md` (at the project root) from natural language.
    - [ ] #005 task name → person | description  due:2026-04-01
    Confirm? (y/n)
    ```
-3. Add to the correct section in `project-tasks.md`
-4. Reply: "✅ Task added."
+2b. **MCP sync check** (only after user confirms):
+   - Scan available tools for names starting with any of these prefixes: `mcp__clickup`, `mcp__trello`, `mcp__jira`, `mcp__asana`, `mcp__linear`, `mcp__notion`, `mcp__todoist`, `mcp__monday`, `mcp__basecamp`, `mcp__github`, `mcp__gitlab`
+   - If one or more are found: ask "Also create in [Tool Name]? (y/n)"
+   - If none found: skip this step silently
+   - Session memory: remember the user's answer for the rest of the session. On subsequent tasks pre-select it as the default — e.g. `[Y/n]` if they said yes, `[y/N]` if they said no. Always accept an explicit override.
+3. **Always write to `project-tasks.md` first**, unconditionally, before any MCP call. Add to the correct section.
+3b. **MCP write** (only if user said yes in step 2b):
+   - Call the detected MCP tool to create the task. Map fields:
+     - task name → title
+     - description (after `|`) → description/notes field
+     - due date → due date field (if the tool supports it)
+     - assignee (after `→`) → assignee (best-effort; skip if the tool requires a user ID lookup)
+   - On MCP failure: do NOT roll back `project-tasks.md`. Report the error clearly (see step 4).
+4. Reply:
+   - No MCP sync: `✅ Task added.`
+   - MCP success: `✅ Task added to project-tasks.md and created in [Tool].`
+   - MCP failure: `✅ Task added to project-tasks.md. Could not sync to [Tool]: [error]. Your task is safe — no retry needed.`
