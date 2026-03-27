@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "algorama-project-manager",
-  "version": "1.0.0",
-  "description": "Lightweight project manager for Claude Code. Keeps context across sessions using local markdown files. No external tools required.",
+  "version": "1.1.0",
+  "description": "Lightweight project manager for Claude Code. Tracks tasks with IDs, due dates, and descriptions. Keeps context across sessions using local markdown files. No external tools required.",
   "author": {
     "name": "Algorama",
     "email": "tiago@algorama.pt",
