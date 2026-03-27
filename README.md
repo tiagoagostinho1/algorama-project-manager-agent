@@ -22,9 +22,9 @@ Keeps full context across sessions using local markdown files. No external tools
 
 **1.** Create `.claude/CLAUDE.md` with your project context (see [template below](#claudemd-template)).
 
-**2.** Create `.claude/CONTEXT.md` (can be empty).
+**2.** That's it. All other files (`project-tasks.md`, `product-backlog.md`, `.claude/CONTEXT.md`) are created automatically on first use.
 
-**3.** That's it. `project-tasks.md` is created automatically at your project root on first use.
+> Already have a `.claude/CLAUDE.md`? The agents will detect it and append the required `## Task tracking` section automatically — your existing content is never overwritten.
 
 ---
 
@@ -99,7 +99,7 @@ your-project/
 ├── product-backlog.md         ← PO: stories and product decisions (auto-created if missing)
 └── .claude/
     ├── CLAUDE.md              ← your project context (fill once)
-    └── CONTEXT.md             ← session history (last 10 sessions)
+    └── CONTEXT.md             ← session history (auto-created on first use)
 ```
 
 `CLAUDE.md` is read automatically by Claude Code at the start of every session. `CONTEXT.md` is appended by the agent at the end of each session and trimmed to the last 10 entries.

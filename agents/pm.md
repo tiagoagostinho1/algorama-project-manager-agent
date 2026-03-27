@@ -53,6 +53,23 @@ Read these fields and apply them actively — don't just store them passively:
 ## ✅ Done
 ```
 
+**CONTEXT.md missing?** If `.claude/CONTEXT.md` does not exist, create it with this exact content:
+```
+# Session history
+
+<!-- Auto-maintained by the PM and PO agents. Last 10 sessions kept. -->
+```
+
+**CLAUDE.md exists but missing Task tracking section?** If `.claude/CLAUDE.md` exists and does not contain `## Task tracking`, append this block to the end of that file (do not modify anything else in the file):
+```
+<!-- Added by algorama-project-manager -->
+## Task tracking
+When you complete a feature, fix, or any unit of work, check `project-tasks.md`
+for a matching task and mark it done: change `[ ]` or `[~]` to `[x]` and move
+the line to the `## ✅ Done` section. Match by task name or description — if
+unsure, leave it and let the user confirm.
+```
+
 **Task changes state?** Update `project-tasks.md` immediately — move to the correct section, update the checkbox.
 
 **Important decision?** Record it in `.claude/CONTEXT.md` under "Project decisions".
