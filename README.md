@@ -108,38 +108,98 @@ your-project/
 
 ## CLAUDE.md template
 
-Copy this to `.claude/CLAUDE.md` in your project and fill it in:
+Copy this to `.claude/CLAUDE.md` in your project and fill it in once. Both the PM and PO agents read this file — each section is labeled so you know which agent uses it and why.
 
 ```markdown
 # Project context
 
+<!-- ═══════════════════════════════════════════
+     SHARED — read by both PM and PO agents
+     Fill this in first. It grounds everything.
+     ═══════════════════════════════════════════ -->
+
 ## Project
 - **Name**: My App
 - **Goal**: [what you're building and why — one sentence]
-- **Status**: [where things stand right now]
-
-## Product
-- **Who is this for**: [be specific — not "users", but "freelance designers who invoice clients"]
-- **Core value**: [the one thing this product does better than anything else]
-- **Success looks like**: [how you know the product is working — a metric, a behavior, a feeling]
-- **What we are NOT building**: [explicit scope boundaries — helps the PO say no faster]
+- **Status**: [where things stand right now — e.g. "early beta, 3 paying users"]
 
 ## Team
 - [Name] — [role]
 - [Name] — [role]
+<!-- Solo? Just put your own name. -->
 
 ## Stack
 - [frontend framework]
 - [backend / database]
-- [other key tools]
+- [key third-party services]
 
-## Current priorities
-1. [top priority]
-2. [second priority]
-3. [third priority]
 
-## Important context
-- [anything the agent should always know — constraints, decisions, deadlines]
+<!-- ═══════════════════════════════════════════
+     FOR YOUR PO — product direction
+     The PO agent uses this to validate stories,
+     prioritize the backlog, and say no to the
+     wrong things. Be honest and specific here.
+     ═══════════════════════════════════════════ -->
+
+## Who this is for
+[Be specific. Not "users" — describe the person: their job, their pain, their context.]
+Example: "Freelance designers who invoice 5–20 clients/month and lose time chasing payments"
+
+## Core value
+[The one thing this product does better than anything else — one sentence.]
+Example: "Turns a 20-minute invoicing process into 2 minutes"
+
+## What success looks like
+[How you know it's working — a number, a behavior, a feeling.]
+Example: "Users send their first invoice within 10 minutes of signing up"
+
+## What we are NOT building
+[Hard scope boundaries. The PO uses this as a kill signal in /po:validate.]
+- [thing you will not build, and why]
+- [another thing out of scope]
+
+## Release rhythm
+[How often do you ship? The PO uses this to size stories and set urgency.]
+Example: "Continuous — ship as soon as a story is done"
+Example: "Weekly — every Friday"
+Example: "Monthly — end of month release"
+
+## This cycle's goal
+[What are you trying to have live by the end of this month/sprint?]
+Example: "Get the first paying customer through onboarding without hand-holding"
+<!-- Update this every cycle. It's the PO's north star for prioritization. -->
+
+
+<!-- ═══════════════════════════════════════════
+     FOR YOUR PM — execution context
+     The PM agent uses this to run sessions,
+     assess urgency, and know what "done" means
+     for this project specifically.
+     ═══════════════════════════════════════════ -->
+
+## Definition of done
+[What does "shipped" mean here? The PM uses this to close tasks correctly.]
+Example: "Deployed to production and smoke-tested"
+Example: "Merged to main, deployed, and user-facing copy updated"
+
+## Constraints
+[What limits what you can do? The PM uses this to avoid suggesting unrealistic next steps.]
+- [e.g. "Solo developer — max 1 thing in progress at a time"]
+- [e.g. "No budget for paid APIs until first revenue"]
+- [e.g. "Can only work evenings — 2–3 hours/day"]
+
+## Key decisions already made
+[Decisions that are final and should not be re-opened. Saves the PM from suggesting things that were already ruled out.]
+- [e.g. "We use Supabase for auth — not building our own"]
+- [e.g. "Mobile-first — desktop is secondary"]
+
+
+<!-- ═══════════════════════════════════════════
+     AUTOMATIC TASK TRACKING
+     Do not remove this section.
+     It enables Claude Code to close tasks
+     automatically as it completes work.
+     ═══════════════════════════════════════════ -->
 
 ## Task tracking
 When you complete a feature, fix, or any unit of work, check `project-tasks.md`
@@ -148,7 +208,7 @@ the line to the `## ✅ Done` section. Match by task name or description — if
 unsure, leave it and let the user confirm.
 ```
 
-This `## Task tracking` block is what enables automatic task closure — Claude Code will check `project-tasks.md` and close matching tasks as it completes work, without you needing to do it manually.
+The `## Task tracking` section enables automatic task closure — Claude Code checks `project-tasks.md` as it completes work without you needing to do it manually. Do not remove it.
 
 ---
 
