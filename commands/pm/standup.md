@@ -4,7 +4,7 @@ description: Generate the weekly standup report, ready to copy and share.
 
 # /pm:standup
 
-Read `.claude/tasks/project-tasks.md` and recent entries in `.claude/CONTEXT.md`. Generate a standup report.
+Read `project-tasks.md` (at the project root) and recent entries in `.claude/CONTEXT.md`. Generate a standup report.
 
 ## Output format
 ```

@@ -31,7 +31,7 @@ After installing, create `.claude/CLAUDE.md` in your project with your context:
 - **Current goal**: Ship MVP by end of month
 ```
 
-Also create `.claude/CONTEXT.md` (can be empty) and copy `tasks/project-tasks.md` to `.claude/tasks/project-tasks.md`.
+Also create `.claude/CONTEXT.md` (can be empty). The agent will create `project-tasks.md` at your project root automatically on first use.
 
 ---
 
@@ -52,14 +52,13 @@ Also create `.claude/CONTEXT.md` (can be empty) and copy `tasks/project-tasks.md
 
 ```
 your-project/
+├── project-tasks.md           ← your task list (agent reads/writes this; auto-created if missing)
 └── .claude/
     ├── CLAUDE.md              ← your project context (fill once, info only)
-    ├── CONTEXT.md             ← session history (agent updates this)
-    └── tasks/
-        └── project-tasks.md  ← your task list (agent reads/writes this)
+    └── CONTEXT.md             ← session history (agent updates this, keeps last 10 sessions)
 ```
 
-`CLAUDE.md` is read automatically by Claude Code at the start of every session — it's purely informational context (who, what, stack, goal). Tasks live separately in `project-tasks.md`.
+`CLAUDE.md` is read automatically by Claude Code at the start of every session — it's purely informational context (who, what, stack, goal). Tasks live in `project-tasks.md` at the project root.
 
 ---
 

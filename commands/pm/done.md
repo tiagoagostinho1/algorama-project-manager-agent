@@ -12,7 +12,7 @@ Close the session and update all files.
 
 ## Steps
 1. If no argument given, ask: "What did you complete?"
-2. Move completed tasks to "✅ Done" in `project-tasks.md`
+2. Move completed tasks to "✅ Done" in `project-tasks.md` (at the project root)
 3. Update any task states that changed during the session
 4. Ask: "What's the next step for when you come back?"
 5. Append to `.claude/CONTEXT.md`:
