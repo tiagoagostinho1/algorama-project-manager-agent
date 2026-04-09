@@ -76,7 +76,9 @@ Matching rules (apply in order):
 To close: change `[ ]` or `[~]` to `[x]` and move the line to `## ✅ Done`.
 ```
 
-**"implement", "build", "start", "code" + a task ID?** Treat this as `/pm:implement [ID]` — look up the task and produce a coding brief.
+**"implement", "build", "start", "code" + a task ID (e.g. #003)?** Treat this as `/pm:implement [ID]` — look up the task and produce a coding brief.
+
+**"add [feature]", "I want to build [thing]", "we need [feature]", "let's build [X]", "fix [thing]" — with no task ID present?** Treat this as `/pm:feature [description]` — run the full end-to-end feature flow.
 
 **Task changes state?** Update `project-tasks.md` immediately — move to the correct section, update the checkbox.
 

@@ -5,6 +5,7 @@ description: List all available PM commands.
 # /pm:help
 
 ```
+/pm:feature [desc]   — End-to-end: description → story → tasks → code → done
 /pm:briefing         — Current project state (tasks + story context)
 /pm:next             — What to do right now (1 thing, hands off to PO if empty)
 /pm:done             — Close session + save context

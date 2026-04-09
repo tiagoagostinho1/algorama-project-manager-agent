@@ -41,10 +41,27 @@ Use the PM agent for daily work. Use the PO agent when you need to think about t
 
 ---
 
+## The fast path
+
+For most work, one command is enough:
+
+```
+/pm:feature add user authentication
+/pm:feature fix the checkout flow on mobile
+/pm:feature I want users to be able to export their data
+```
+
+This handles the entire flow — story, acceptance criteria, tasks, and code — in one shot. It reads your `CLAUDE.md` for context, asks at most 2 clarifying questions, writes the story and tasks, then starts coding immediately.
+
+Use the individual PO and PM commands when you want more control: to validate an idea before building, reprioritize the backlog, or pick up a specific task mid-stream.
+
+---
+
 ## PM commands
 
 | Command | What it does |
 |---|---|
+| `/pm:feature [text]` | End-to-end: description → story → tasks → code → done |
 | `/pm:briefing` | Current state — tasks with story context, product pulse |
 | `/pm:next` | One thing to do right now — hands off to PO if backlog is empty |
 | `/pm:done` | Close session, update tasks, save context |
