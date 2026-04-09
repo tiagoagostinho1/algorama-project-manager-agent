@@ -49,6 +49,8 @@ Use the PM agent for daily work. Use the PO agent when you need to think about t
 | `/pm:next` | One thing to do right now — hands off to PO if backlog is empty |
 | `/pm:done` | Close session, update tasks, save context |
 | `/pm:task [text]` | Add a task from natural language |
+| `/pm:implement [ID]` | Look up a task — gives Claude Code everything needed to start coding |
+| `/pm:sync` | Reconcile last coding session against open tasks — propose and apply updates |
 | `/pm:unblock [ID]` | Resolve a blocked task — decision, workaround, or spike |
 | `/pm:review` | Weekly review — done, slipped, stale, overdue |
 | `/pm:standup` | Weekly report ready to share |
@@ -202,10 +204,16 @@ Example: "Merged to main, deployed, and user-facing copy updated"
      ═══════════════════════════════════════════ -->
 
 ## Task tracking
-When you complete a feature, fix, or any unit of work, check `project-tasks.md`
-for a matching task and mark it done: change `[ ]` or `[~]` to `[x]` and move
-the line to the `## ✅ Done` section. Match by task name or description — if
-unsure, leave it and let the user confirm.
+After completing any unit of work, check `project-tasks.md` for a matching task and close it.
+
+Matching rules (apply in order):
+1. **Exact ID** — if the work references `#NNN`, match that task directly.
+2. **Keyword scan** — extract key nouns/verbs from what you built (e.g. "login", "auth", "fix") and match against task names and descriptions. Partial matches count.
+3. **In-progress bias** — if a `[~]` task is plausibly related, prefer it over a `[ ]` task.
+4. **Multiple matches** — list them and ask: "Which task should I close? (or all?)"
+5. **No match** — prompt: "I don't see a matching task — should I add one?"
+
+To close: change `[ ]` or `[~]` to `[x]` and move the line to `## ✅ Done`.
 ```
 
 The `## Task tracking` section enables automatic task closure — Claude Code checks `project-tasks.md` as it completes work without you needing to do it manually. Do not remove it.
