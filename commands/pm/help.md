@@ -6,10 +6,11 @@ description: List all available PM commands.
 
 ```
 /pm:feature [desc]   — End-to-end: description → story → tasks → code → done
+/pm:spec [desc|ID]   — Generate a spec before building (behaviors, edge cases, states)
 /pm:briefing         — Current project state (tasks + story context)
 /pm:next             — What to do right now (1 thing, hands off to PO if empty)
 /pm:done             — Close session + save context
-/pm:task [txt]       — Add a new task (+ sync to ClickUp/Jira/etc. if connected)
+/pm:task [txt|#ID]   — Add a task, or view full detail for an existing one
 /pm:implement [ID]   — Look up a task and give Claude Code everything it needs to build it
 /pm:sync             — Reconcile last session against open tasks — propose and apply updates
 /pm:unblock [ID]     — Resolve a blocked task — decision, workaround, or spike

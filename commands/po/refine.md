@@ -29,6 +29,9 @@ Take a raw story from 🟢 Later or ❓ Under Discussion and make it ready to bu
 7. Ask: "Break this down into tasks now? (y/n)"
    - If yes: run `/po:breakdown #PXXX` inline — no need for the user to type it separately
    - If no: reply: "✅ #PXXX refined and moved to Next. Run `/po:breakdown #PXXX` when you're ready to start building."
+8. After task breakdown (or if user said no to breakdown), ask: "Want a spec file for this story? (y/n)"
+   - If yes: run `/pm:spec #PXXX` inline — generates `specs/PXXX-slug.md` with full behaviors, edge cases, and states
+   - If no: skip silently
 
 ## Rules
 - Push back if the story is too vague, too large, or solves a problem nobody has confirmed. Say so directly.

@@ -18,6 +18,8 @@ List all tasks in Backlog and In Progress sections. Ask which one to implement.
 
 2. Scan `product-backlog.md` (if it exists) for a story that links to this task — look for `→ tasks #NNN` or `→ tasks #NNN–#NNN` on a story line where the requested task ID falls in range. If found, read that story's text and any acceptance criteria indented under it.
 
+2b. Check if that story has a `spec:specs/PNNN-*.md` link on its line. If yes, note the spec path — include it in the coding brief so Claude Code reads it before coding.
+
 3. Read `.claude/CLAUDE.md` for: **Stack**, **Definition of done**, **Key decisions already made**.
 
 4. Mark the task `[~]` in `project-tasks.md` and move it to `## 🔄 In Progress` if it isn't there already.
@@ -37,6 +39,7 @@ List all tasks in Backlog and In Progress sections. Ask which one to implement.
 - [ ] [criterion 1]
 - [ ] [criterion 2]
 
+**Spec:** specs/PNNN-slug.md   ← omit if no spec file linked to this story; read it before coding
 **Stack:** [from CLAUDE.md — omit if CLAUDE.md missing]
 **Definition of done:** [from CLAUDE.md — omit if missing]
 **Key decisions:** [only decisions relevant to this task — omit section if none apply or CLAUDE.md missing]

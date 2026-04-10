@@ -21,6 +21,7 @@ Before asking anything, read:
 1. `.claude/CLAUDE.md` — Stack, Who this is for, Core value, Definition of done, Constraints, Key decisions already made, What we are NOT building
 2. `product-backlog.md` — check for existing matching story + highest `#PNNN`
 3. `project-tasks.md` — highest existing `#NNN`
+4. `specs/PNNN-*.md` — if a matching story has a `spec:` link on its line, read that spec file. **The spec is the primary source of truth for behaviors, edge cases, and AC — skip Phase 2 (clarify) entirely when a spec exists.**
 
 If files don't exist yet, continue — you'll create them when writing.
 
@@ -142,9 +143,17 @@ On confirmation:
 2. **`project-tasks.md`** — append all tasks to `## 📋 Backlog` with status `[ ]`
 3. If either file doesn't exist, create it using the standard template before writing
 
+**MCP sync check** (after writing local files):
+- Scan available tools for names starting with: `mcp__clickup`, `mcp__jira`, `mcp__linear`, `mcp__asana`, `mcp__trello`, `mcp__notion`, `mcp__todoist`, `mcp__monday`, `mcp__basecamp`, `mcp__github`, `mcp__gitlab`
+- If one or more are found: ask "Also create story and tasks in [Tool Name]? (y/n)"
+  - If yes: create the story as an item/epic and each task as a sub-item/task. Map: story text → title, AC → description, due dates → due date field, assignee from task `→` field → assignee (best-effort). On failure: report error, do NOT roll back local files.
+- If none found: skip silently
+- Session memory: remember the user's answer for the rest of the session. Use `[Y/n]` or `[y/N]` as default on subsequent features.
+
 Reply:
 ```
 ✅ #PNNN created — [N] tasks added (#NNN–#NNN).
+[✅ Also created in [Tool] | ⚠️ [Tool] sync failed: [error]]
 Starting #NNN now.
 ```
 
@@ -168,6 +177,7 @@ Implement each task in order without asking between tasks.
 - [ ] [the specific AC item(s) this task covers]
 - [ ] Meets project DoD: [DoD from CLAUDE.md]
 
+**Spec:** specs/PNNN-slug.md — read for full behaviors, edge cases, and states   ← omit if no spec file exists
 **Stack:** [from CLAUDE.md]
 **Key decisions:** [only decisions relevant to this task — omit section if none]
 

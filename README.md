@@ -57,11 +57,29 @@ Use the individual PO and PM commands when you want more control: to validate an
 
 ---
 
+## Spec-driven path (more detail, less guessing)
+
+If you want the AI to have maximum context before touching code, write a spec first:
+
+```
+/pm:spec add user authentication
+```
+
+This generates `specs/P001-user-auth.md` — a structured document with every behavior, edge case, UI state, and constraint spelled out. You review and edit it. Then when you run `/pm:feature` or `/pm:implement`, the spec is read automatically and used as the primary source of truth — no clarifying questions needed.
+
+**Fast path** — best for clear, scoped features you can describe in one sentence.
+**Spec path** — best for complex features, features with many edge cases, or when you want to think before building.
+
+Both paths produce the same output (story + tasks + code). The spec path just gives Claude Code more to work with.
+
+---
+
 ## PM commands
 
 | Command | What it does |
 |---|---|
 | `/pm:feature [text]` | End-to-end: description → story → tasks → code → done |
+| `/pm:spec [ID or text]` | Generate a spec before building — behaviors, edge cases, states |
 | `/pm:briefing` | Current state — tasks with story context, product pulse |
 | `/pm:next` | One thing to do right now — hands off to PO if backlog is empty |
 | `/pm:done` | Close session, update tasks, save context |
@@ -116,6 +134,9 @@ Tasks are added via `/pm:task` or edited manually — both work.
 your-project/
 ├── project-tasks.md           ← PM: execution tasks (auto-created if missing)
 ├── product-backlog.md         ← PO: stories and product decisions (auto-created if missing)
+├── specs/                     ← spec files, one per story (auto-created by /pm:spec)
+│   ├── P001-user-auth.md
+│   └── P002-password-reset.md
 └── .claude/
     ├── CLAUDE.md              ← your project context (fill once)
     └── CONTEXT.md             ← session history (auto-created on first use)

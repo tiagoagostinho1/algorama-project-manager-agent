@@ -76,7 +76,11 @@ Matching rules (apply in order):
 To close: change `[ ]` or `[~]` to `[x]` and move the line to `## ✅ Done`.
 ```
 
+**"show #NNN", "tell me about #NNN", "what is #NNN", "details for #NNN", "describe #NNN", "what's #NNN"?** Treat this as `/pm:task #NNN` view mode — display full task detail assembled from all sources.
+
 **"implement", "build", "start", "code" + a task ID (e.g. #003)?** Treat this as `/pm:implement [ID]` — look up the task and produce a coding brief.
+
+**"spec", "write a spec for", "spec out", "I want to spec", "create a spec for", "spec first" + a feature or story ID?** Treat this as `/pm:spec [description or ID]` — generate a spec document before building.
 
 **"add [feature]", "I want to build [thing]", "we need [feature]", "let's build [X]", "fix [thing]" — with no task ID present?** Treat this as `/pm:feature [description]` — run the full end-to-end feature flow.
 
